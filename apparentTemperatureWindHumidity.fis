@@ -4,7 +4,7 @@ Type='mamdani'
 Version=2.0
 NumInputs=3
 NumOutputs=1
-NumRules=29
+NumRules=18
 AndMethod='min'
 OrMethod='max'
 ImpMethod='min'
@@ -15,70 +15,58 @@ DefuzzMethod='centroid'
 Name='temperature'
 Range=[-10 40]
 NumMFs=5
-MF1='veryCold':'trapmf',[-10 -10 -5 0]
-MF2='cold':'gaussmf',[3 0]
-MF3='mild':'gaussmf',[5 12]
-MF4='hot':'gaussmf',[3 25]
-MF5='veryHot':'trapmf',[30 35 40 40]
+MF1='veryCold':'gaussmf',[5 -10]
+MF2='cold':'gaussmf',[5 2.5]
+MF3='mild':'gaussmf',[5 15]
+MF4='hot':'gaussmf',[5 27.5]
+MF5='veryHot':'gaussmf',[5 40]
 
 [Input2]
-Name='wind'
-Range=[0 20]
+Name='windSpeed'
+Range=[0 100]
 NumMFs=4
-MF1='calm':'trapmf',[0 0 1 3]
-MF2='lightBreeze':'gaussmf',[1 3]
-MF3='windy':'gaussmf',[1.5 7]
-MF4='strongWind':'trapmf',[10 15 20 20]
+MF1='calm':'gaussmf',[14 0]
+MF2='light':'gaussmf',[14 33.3]
+MF3='moderate':'gaussmf',[14 66.6]
+MF4='strong':'gaussmf',[14 100]
 
 [Input3]
 Name='humidity'
 Range=[0 100]
 NumMFs=4
-MF1='dry':'gaussmf',[6 0]
-MF2='comfortable':'gaussmf',[8 40]
-MF3='humid':'gaussmf',[6 65]
-MF4='veryHumid':'gaussmf',[5 100]
+MF1='dry':'gaussmf',[14 0]
+MF2='comfortable':'gaussmf',[14 33.3]
+MF3='humid':'gaussmf',[14 66.6]
+MF4='veryHumid':'gaussmf',[14 100]
 
 [Output1]
-Name='apparentTemperature'
+Name='output1'
 Range=[-20 50]
-NumMFs=8
-MF1='extremeCold':'gaussmf',[2 -20]
-MF2='veryCold':'gaussmf',[2 -15]
-MF3='cold':'gaussmf',[2 -5]
-MF4='cool':'gaussmf',[2.5 0]
-MF5='comfortable':'gaussmf',[3 10]
-MF6='warm':'gaussmf',[3 20]
-MF7='hot':'gaussmf',[3 35]
-MF8='extremeHot':'gaussmf',[2.25 50]
+NumMFs=7
+MF1='dangerouslyCold':'gaussmf',[5 -20]
+MF2='veryCold':'gaussmf',[5 -8.3]
+MF3='cold':'gaussmf',[5 3.3]
+MF4='moderate':'gaussmf',[5 15]
+MF5='warm':'gaussmf',[5 26.6]
+MF6='veryHot':'gaussmf',[5 38.3]
+MF7='dangerouslyHot':'gaussmf',[5 50]
 
 [Rules]
-1 1 0, 1 (1) : 1
-1 2 0, 1 (1) : 1
-1 3 0, 1 (1) : 1
 1 4 0, 1 (1) : 1
-2 1 0, 2 (1) : 1
-2 2 0, 2 (1) : 1
-2 3 0, 1 (1) : 1
-2 4 0, 1 (1) : 1
-3 1 1, 4 (1) : 1
-3 2 1, 4 (1) : 1
-3 3 1, 3 (1) : 1
-3 4 1, 2 (1) : 1
-3 1 2, 5 (1) : 1
-3 2 2, 5 (1) : 1
-3 3 2, 4 (1) : 1
-3 4 2, 3 (1) : 1
-3 1 3, 6 (1) : 1
-3 2 3, 6 (1) : 1
-3 3 3, 5 (1) : 1
-3 4 3, 4 (1) : 1
-3 1 4, 7 (1) : 1
-3 2 4, 7 (1) : 1
-3 3 4, 6 (1) : 1
-3 4 4, 5 (1) : 1
-4 0 2, 6 (1) : 1
-4 0 3, 7 (1) : 1
-4 0 4, 8 (1) : 1
-5 0 3, 8 (1) : 1
-5 0 4, 8 (1) : 1
+1 3 0, 1 (1) : 1
+1 1 0, 2 (1) : 1
+2 4 0, 2 (1) : 1
+2 3 0, 3 (1) : 1
+2 1 0, 3 (1) : 1
+3 0 0, 4 (1) : 1
+2 2 0, 3 (1) : 1
+4 0 2, 5 (1) : 1
+5 0 4, 7 (1) : 1
+5 0 3, 7 (1) : 1
+5 0 1, 6 (1) : 1
+4 0 4, 6 (1) : 1
+4 0 3, 6 (1) : 1
+4 0 1, 5 (1) : 1
+3 4 0, 3 (1) : 1
+3 0 4, 5 (1) : 1
+5 4 0, 6 (1) : 1
