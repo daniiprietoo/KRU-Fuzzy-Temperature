@@ -1,0 +1,135 @@
+[System]
+Name='realistic_temp_hum_wind'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=80
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='temperature'
+Range=[-10 40]
+NumMFs=5
+MF1='veryCold':'gaussmf',[5 -10]
+MF2='cold':'gaussmf',[5 0]
+MF3='mild':'gaussmf',[6 12]
+MF4='hot':'gaussmf',[6 25]
+MF5='veryHot':'gaussmf',[4 40]
+
+[Input2]
+Name='wind'
+Range=[0 20]
+NumMFs=4
+MF1='calm':'gaussmf',[2 0]
+MF2='lightBreeze':'gaussmf',[1 3]
+MF3='windy':'gaussmf',[4 10]
+MF4='strongWind':'gaussmf',[5 20]
+
+[Input3]
+Name='humidity'
+Range=[0 100]
+NumMFs=4
+MF1='dry':'gaussmf',[10 0]
+MF2='comfortable':'gaussmf',[12 40]
+MF3='humid':'gaussmf',[12 65]
+MF4='veryHumid':'gaussmf',[15 100]
+
+[Output1]
+Name='apparentTemperature'
+Range=[-20 70]
+NumMFs=8
+MF1='extremeCold':'gaussmf',[3 -20]
+MF2='veryCold':'gaussmf',[3 -12]
+MF3='cold':'gaussmf',[4 -5]
+MF4='cool':'gaussmf',[4 0]
+MF5='comfortable':'gaussmf',[5 10]
+MF6='warm':'gaussmf',[6 20]
+MF7='hot':'gaussmf',[6 35]
+MF8='extremeHot':'gaussmf',[8 60]
+
+[Rules]
+1 1 1, 2 (1) : 1
+1 1 2, 2 (1) : 1
+1 1 3, 2 (1) : 1
+1 1 4, 1 (1) : 1
+1 2 1, 2 (1) : 1
+1 2 2, 2 (1) : 1
+1 2 3, 1 (1) : 1
+1 2 4, 1 (1) : 1
+1 3 1, 2 (1) : 1
+1 3 2, 1 (1) : 1
+1 3 3, 1 (1) : 1
+1 3 4, 1 (1) : 1
+1 4 1, 1 (1) : 1
+1 4 2, 1 (1) : 1
+1 4 3, 1 (1) : 1
+1 4 4, 1 (1) : 1
+2 1 1, 3 (1) : 1
+2 1 2, 3 (1) : 1
+2 1 3, 3 (1) : 1
+2 1 4, 2 (1) : 1
+2 2 1, 3 (1) : 1
+2 2 2, 3 (1) : 1
+2 2 3, 2 (1) : 1
+2 2 4, 2 (1) : 1
+2 3 1, 3 (1) : 1
+2 3 2, 2 (1) : 1
+2 3 3, 2 (1) : 1
+2 3 4, 1 (1) : 1
+2 4 1, 2 (1) : 1
+2 4 2, 1 (1) : 1
+2 4 3, 1 (1) : 1
+2 4 4, 1 (1) : 1
+3 1 1, 4 (1) : 1
+3 1 2, 5 (1) : 1
+3 1 3, 5 (1) : 1
+3 1 4, 6 (1) : 1
+3 2 1, 4 (1) : 1
+3 2 2, 5 (1) : 1
+3 2 3, 5 (1) : 1
+3 2 4, 5 (1) : 1
+3 3 1, 4 (1) : 1
+3 3 2, 4 (1) : 1
+3 3 3, 4 (1) : 1
+3 3 4, 5 (1) : 1
+3 4 1, 3 (1) : 1
+3 4 2, 3 (1) : 1
+3 4 3, 4 (1) : 1
+3 4 4, 4 (1) : 1
+4 1 1, 6 (1) : 1
+4 1 2, 7 (1) : 1
+4 1 3, 8 (1) : 1
+4 1 4, 8 (1) : 1
+4 2 1, 6 (1) : 1
+4 2 2, 6 (1) : 1
+4 2 3, 7 (1) : 1
+4 2 4, 7 (1) : 1
+4 3 1, 6 (1) : 1
+4 3 2, 7 (1) : 1
+4 3 3, 7 (1) : 1
+4 3 4, 8 (1) : 1
+4 4 1, 6 (1) : 1
+4 4 2, 6 (1) : 1
+4 4 3, 7 (1) : 1
+4 4 4, 7 (1) : 1
+5 1 1, 7 (1) : 1
+5 1 2, 7 (1) : 1
+5 1 3, 8 (1) : 1
+5 1 4, 8 (1) : 1
+5 2 1, 7 (1) : 1
+5 2 2, 7 (1) : 1
+5 2 3, 8 (1) : 1
+5 2 4, 8 (1) : 1
+5 3 1, 7 (1) : 1
+5 3 2, 7 (1) : 1
+5 3 3, 7 (1) : 1
+5 3 4, 8 (1) : 1
+5 4 1, 7 (1) : 1
+5 4 2, 7 (1) : 1
+5 4 3, 7 (1) : 1
+5 4 4, 8 (1) : 1
