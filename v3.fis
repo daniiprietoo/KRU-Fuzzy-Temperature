@@ -1,0 +1,75 @@
+[System]
+Name='v3'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=21
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='temperature'
+Range=[-10 40]
+NumMFs=5
+MF1='veryCold':'gaussmf',[5 -10]
+MF2='cold':'gaussmf',[5 2.5]
+MF3='mild':'gaussmf',[5 15]
+MF4='hot':'gaussmf',[5 27.5]
+MF5='veryHot':'gaussmf',[5 40]
+
+[Input2]
+Name='windSpeed'
+Range=[0 100]
+NumMFs=4
+MF1='calm':'gaussmf',[14 0]
+MF2='light':'gaussmf',[14 33.3]
+MF3='moderate':'gaussmf',[14 66.6]
+MF4='strong':'gaussmf',[14 100]
+
+[Input3]
+Name='humidity'
+Range=[0 100]
+NumMFs=4
+MF1='dry':'gaussmf',[14 0]
+MF2='comfortable':'gaussmf',[14 33.3]
+MF3='humid':'gaussmf',[14 66.6]
+MF4='veryHumid':'gaussmf',[14 100]
+
+[Output1]
+Name='apparent_temp'
+Range=[-20 50]
+NumMFs=7
+MF1='dangerouslyCold':'gaussmf',[5 -20]
+MF2='veryCold':'gaussmf',[5 -8.3]
+MF3='cold':'gaussmf',[5 3.3]
+MF4='moderate':'gaussmf',[5 15]
+MF5='warm':'gaussmf',[5 26.6]
+MF6='veryHot':'gaussmf',[5 38.3]
+MF7='dangerouslyHot':'gaussmf',[5 50]
+
+[Rules]
+1 4 0, 1 (1) : 1
+1 3 0, 1 (1) : 1
+1 1 0, 2 (1) : 1
+2 4 0, 2 (1) : 1
+2 3 0, 2 (1) : 1
+2 1 0, 3 (1) : 1
+3 0 0, 4 (1) : 1
+2 2 0, 3 (1) : 1
+4 0 2, 5 (1) : 1
+5 0 4, 7 (1) : 1
+5 0 3, 7 (1) : 1
+5 0 1, 6 (1) : 1
+4 0 4, 6 (1) : 1
+4 0 3, 6 (1) : 1
+4 0 1, 5 (1) : 1
+3 4 0, 3 (1) : 1
+3 0 4, 5 (1) : 1
+5 4 0, 6 (1) : 1
+2 2 0, 3 (1) : 1
+1 2 0, 2 (1) : 1
+5 0 2, 6 (1) : 1
